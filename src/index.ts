@@ -2,6 +2,8 @@ import { visit } from 'unist-util-visit'
 import shortenRepoUrl from 'shorten-repo-url'
 import type { Plugin } from 'unified'
 
+import { parse } from './utils'
+
 // refs: https://github.com/refined-github/shorten-repo-url/blob/main/index.js#L68
 const defaultAllowList = [
   'https://github.com',
@@ -17,7 +19,10 @@ type Options = {
   allowList?: string[]
 }
 
-const isAllowed = (href: string, allowList = defaultAllowList) => {
+const isAllowed = (href: string, allowList?: string[]) => {
+  if (!allowList) {
+    return true
+  }
   const { origin } = new URL(href)
   return allowList.some((h) => h.includes(origin))
 }
@@ -59,20 +64,5 @@ export function remarkRefinedGithub({ allowList = defaultAllowList }: Options = 
 
       node.children = children
     })
-  }
-}
-
-export function parse(node: { url: string }) {
-  const url = node.url || ''
-  const shortenRepoUrlRegex = /(.*)<code>(.*)<\/code>/
-  const match = shortenRepoUrlRegex.exec(url)
-
-  if (!match) {
-    return
-  }
-
-  return {
-    text: match?.[1],
-    inlineCode: match?.[2],
   }
 }
