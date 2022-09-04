@@ -27,6 +27,26 @@ const file = await remark()
   .process(await read('test/fixtures/input.md'))
 ```
 
+## options
+
+`allowList` - current plugin only shorten url listed in `allowList`
+
+- type `string[]`
+
+By default, it equals
+
+```tsx
+'https://github.com',
+'https://www.npmjs.com',
+'https://raw.githubusercontent.com',
+'https://cdn.rawgit.com',
+'https://rawgit.com',
+'https://togithub.com', // Renovate
+'https://github-redirect.dependabot.com', // Dependabot
+```
+
+
+
 ## development
 
 - **Setup** - `pnpm i`
