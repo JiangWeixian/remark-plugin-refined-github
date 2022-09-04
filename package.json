@@ -40,6 +40,7 @@
     "ci:publish": "pnpm run build && pnpm changeset publish",
     "ci:snapshot": "pnpm changeset version --snapshot beta",
     "ci:prerelease": "pnpm run build && pnpm changeset publish --tag beta",
+    "prepare": "husky install",
     "lint:fix": "eslint . --fix"
   },
   "lint-staged": {
