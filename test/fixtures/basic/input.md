@@ -1,3 +1,4 @@
+<!-- test cases from remark-plugin-github -->
 An empty link: this and that.
 
 A link to Non GH: https://feedly.com/i/my
@@ -14,10 +15,10 @@ A link to a graphs: https://github.com/foo/bar/graphs
 
 A link to a traffic: https://github.com/foo/bar/graphs/traffic
 
+<!-- test cases from shorten-github-url -->
 https://github.com/fregante/shorten-repo-url/
 https://github.com/fregante/shorten-repo-url/tree/v0.12
 https://github.com/fregante/shorten-repo-url/tree/d71718db6aa4feb8dc10edbad1134472468e971a
-
 https://github.com/nodejs/node/
 https://github.com/nodejs/shorten-repo-url/
 https://github.com/nodejs/node/tree/v0.12
@@ -133,3 +134,6 @@ https://togithub.com/nodejs/node/pull/123/files
 https://togithub.com/fregante/shorten-repo-url/commit/98c6175b0cbd4caca71d24e68e57b942b0dfb549
 https://togithub.com/refined-github/refined-github/commit/4f270c4f50e0a2a20085a6e92095117f10340322
 https://togithub.com/refined-github/refined-github/commit/e81a9646b448d90c7e02ab41332cab0507dccbbd#commitcomment-60089354
+
+<!-- fixtures -->
+[should-not-shorten](https://github.com/neo-hack/neo)

@@ -1,5 +1,6 @@
 import { visit } from 'unist-util-visit'
 import shortenRepoUrl from 'shorten-repo-url'
+import { toString } from 'mdast-util-to-string'
 import type { Plugin } from 'unified'
 
 import { parse } from './utils'
@@ -27,9 +28,17 @@ const isAllowed = (href: string, allowList?: string[]) => {
   return allowList.some((h) => h.includes(origin))
 }
 
+const isShortened = (node: any) => {
+  return node.url !== toString(node)
+}
+
 export function remarkRefinedGithub({ allowList = defaultAllowList }: Options = {}): Plugin {
   return (tree) => {
     visit(tree, 'link', (node) => {
+      // skip shorten url `[text](url)`
+      if (isShortened(node)) {
+        return
+      }
       if (!isAllowed(node.url, allowList)) {
         return
       }
